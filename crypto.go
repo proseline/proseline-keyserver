@@ -68,3 +68,12 @@ func serverStretch(proof, salt []byte) []byte {
 	}
 	return key
 }
+
+// UnwrapKey unwraps a wrapped key.
+func UnwrapKey(wrapped, unwrap []byte) []byte {
+	result := make([]byte, len(wrapped))
+	for i := range wrapped {
+		result[i] = wrapped[i] ^ unwrap[i]
+	}
+	return result
+}
